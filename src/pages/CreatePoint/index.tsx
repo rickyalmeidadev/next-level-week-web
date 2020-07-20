@@ -29,10 +29,7 @@ const CreatePoint = () => {
   const [ufs, setUfs] = useState<string[]>([]);
   const [cities, setCities] = useState<string[]>([]);
 
-  const [initialPosition, setInitialPosition] = useState<[number, number]>([
-    0,
-    0
-  ]);
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([0, 0]);
 
   const [inputData, setInputData] = useState({
     name: '',
@@ -43,10 +40,7 @@ const CreatePoint = () => {
   const [selectedUf, setSelectedUf] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
-  const [selectedPosition, setSelectedPosition] = useState<[number, number]>([
-    0,
-    0
-  ]);
+  const [selectedPosition, setSelectedPosition] = useState<[number, number]>([0, 0]);
 
   const history = useHistory();
 
@@ -55,7 +49,7 @@ const CreatePoint = () => {
       const { latitude, longitude } = position.coords;
       setInitialPosition([latitude, longitude]);
     });
-  });
+  }, []);
 
   useEffect(() => {
     api.get('items').then(response => setItems(response.data));
